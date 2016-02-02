@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
 
         if (waitKey(30) == 27) //wcisnij esc aby wyjsc
        {
-            cout << "esc zostało wciśnięte" << endl;
+            cout << "esc zostało wciśniętee" << endl;
             break; 
        }
     }
