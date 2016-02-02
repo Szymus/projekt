@@ -6,38 +6,38 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    VideoCapture cap(0); // open the video camera no. 0
+    VideoCapture cap(0); // uruchomienie kamery 0
 
-    if (!cap.isOpened())  // if not success, exit program
+    if (!cap.isOpened())  // jak sie nie uda
     {
         cout << "Cannot open the video cam" << endl;
         return -1;
     }
 
-   double dWidth = cap.get(CV_CAP_PROP_FRAME_WIDTH); //get the width of frames of the video
-   double dHeight = cap.get(CV_CAP_PROP_FRAME_HEIGHT); //get the height of frames of the video
+   double dWidth = cap.get(CV_CAP_PROP_FRAME_WIDTH); //szerokosc obrazu
+   double dHeight = cap.get(CV_CAP_PROP_FRAME_HEIGHT); //wysokosc obrazu
 
-    cout << "Frame size : " << dWidth << " x " << dHeight << endl;
+    cout << "Wymiary ramki : " << dWidth << " x " << dHeight << endl;
 
-    namedWindow("MyVideo",CV_WINDOW_AUTOSIZE); //create a window called "MyVideo"
+    namedWindow("MyVideo",CV_WINDOW_AUTOSIZE); //tworzy okno "MuVideo"
 
     while (1)
     {
         Mat frame;
 
-        bool bSuccess = cap.read(frame); // read a new frame from video
+        bool bSuccess = cap.read(frame); // wczytywanie klatek z kamery
 
-        if (!bSuccess) //if not success, break loop
+        if (!bSuccess) //jak sie nie uda wczytac klatki
         {
-             cout << "Cannot read a frame from video stream" << endl;
+             cout << "Nie można zczytywać obrazu z kamery" << endl;
              break;
         }
 
-        imshow("MyVideo", frame); //show the frame in "MyVideo" window
+        imshow("MyVideo", frame); //pokaz frame w oknie "MyVideo" 
 
-        if (waitKey(30) == 27) //wait for 'esc' key press for 30ms. If 'esc' key is pressed, break loop
+        if (waitKey(30) == 27) //wcisnij esc aby wyjsc
        {
-            cout << "esc key is pressed by user" << endl;
+            cout << "esc zostało wciśnięte" << endl;
             break; 
        }
     }
